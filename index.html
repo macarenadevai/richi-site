@@ -10,14 +10,16 @@
   <meta property="og:site_name" content="Richi" />
   <meta property="og:title" content="Richi — Full Stack Developer" />
   <meta property="og:description" content="Sitio personal de Richi — Ingeniero en Sistemas Computacionales, Full Stack Developer." />
-  <meta property="og:url" content="https://usainbluntmx.github.io" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://macarenadevai.github.io/richi-site/richi-profile.png" />
+  <meta property="og:url" content="https://usainbluntmx.xyz" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Richi — Full Stack Developer" />
   <meta name="twitter:description" content="Sitio personal de Richi — Ingeniero en Sistemas Computacionales, Full Stack Developer." />
-  <link rel="canonical" href="https://usainbluntmx.github.io" />
-  <link rel="alternate" hreflang="es" href="https://usainbluntmx.github.io/" />
-  <link rel="alternate" hreflang="en" href="https://usainbluntmx.github.io/en/" />
-  <link rel="alternate" hreflang="x-default" href="https://usainbluntmx.github.io/" />
+  <meta name="twitter:image" content="https://macarenadevai.github.io/richi-site/richi-profile.png" />
+  <link rel="canonical" href="https://usainbluntmx.xyz" />
+  <link rel="alternate" hreflang="es" href="https://usainbluntmx.xyz/" />
+  <link rel="alternate" hreflang="en" href="https://usainbluntmx.xyz/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://usainbluntmx.xyz/" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%230A0A0A'/%3E%3Ctext x='50' y='58' text-anchor='middle' font-family='Arial' font-size='36' font-weight='bold' fill='%2300FFAA'%3ER%3C/text%3E%3C/svg%3E" />
   <style>
     :root {
@@ -29,16 +31,12 @@
       --text-secondary: #888888;
       --text-muted: #555555;
       --accent: #00FFAA;
-      --accent-dim: rgba(0, 255, 170, 0.08);
-      --accent-glow: rgba(0, 255, 170, 0.03);
       --font-mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
       --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       background: var(--bg);
@@ -47,7 +45,6 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
-
     a {
       color: var(--text);
       text-decoration: none;
@@ -55,7 +52,7 @@
     }
     a:hover { color: var(--accent); }
 
-    /* ── Language Switcher ── */
+    /* Language Switcher */
     .lang-nav {
       display: flex;
       align-items: center;
@@ -79,14 +76,14 @@
     }
     .lang-divider { color: var(--text-muted); }
 
-    /* ── Page ── */
+    /* Page */
     .page {
       max-width: 640px;
       margin: 0 auto;
       padding: 40px 24px 60px;
     }
 
-    /* ── Command Header ── */
+    /* Command Header */
     .cmd-line {
       font-family: var(--font-mono);
       font-size: 12px;
@@ -110,13 +107,27 @@
       50% { opacity: 0; }
     }
 
-    /* ── Identity ── */
-    .identity { margin-bottom: 40px; }
+    /* Identity with Profile Image */
+    .identity {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    .identity .profile-img {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+    .identity .identity-text { flex: 1; }
     .identity h1 {
       font-family: var(--font-mono);
       font-size: clamp(1.5rem, 4vw, 2rem);
       font-weight: 700;
-      margin: 0 0 12px;
+      margin: 0 0 6px;
       color: var(--text);
     }
     .identity h1 .dot { color: var(--accent); }
@@ -124,7 +135,7 @@
       font-family: var(--font-mono);
       font-size: 14px;
       color: var(--text-secondary);
-      margin: 0 0 6px;
+      margin: 0 0 4px;
     }
     .identity .location {
       font-family: var(--font-mono);
@@ -133,7 +144,16 @@
       margin: 0;
     }
 
-    /* ── About ── */
+    /* Glow line */
+    .glow-line {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 0 0 24px;
+      box-shadow: 0 0 6px var(--accent);
+    }
+
+    /* About */
     .about {
       margin-bottom: 40px;
       padding: 20px;
@@ -149,7 +169,7 @@
     }
     .about p .highlight { color: var(--accent); }
 
-    /* ── Section Label ── */
+    /* Section Label */
     .section-label {
       font-family: var(--font-mono);
       font-size: 12px;
@@ -157,7 +177,7 @@
       margin-bottom: 16px;
     }
 
-    /* ── Social Grid ── */
+    /* Social Grid */
     .social-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -166,7 +186,7 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       overflow: hidden;
-      margin-bottom: 40px;
+      margin-bottom: 0;
     }
     .social-link {
       display: flex;
@@ -196,7 +216,7 @@
       font-size: 11px;
     }
 
-    /* ── Baila! Link full-width ── */
+    /* Baila! Link full-width */
     .baila-link {
       display: flex;
       align-items: center;
@@ -210,7 +230,7 @@
       font-family: var(--font-mono);
       font-size: 15px;
       color: var(--accent);
-      margin-bottom: 40px;
+      margin: 12px 0 40px;
       transition: background 0.25s, border-color 0.25s;
     }
     .baila-link:hover {
@@ -218,11 +238,9 @@
       border-color: var(--accent);
       color: var(--accent);
     }
-    .baila-icon {
-      font-size: 20px;
-    }
+    .baila-icon { font-size: 20px; }
 
-    /* ── Outro ── */
+    /* Outro */
     .outro {
       text-align: center;
       padding: 32px 0;
@@ -235,39 +253,30 @@
       margin: 0;
       line-height: 1.8;
     }
-    .outro a {
-      color: var(--text-secondary);
-    }
+    .outro a { color: var(--text-secondary); }
     .outro a:hover { color: var(--accent); }
 
-    /* Cyberpunk glow line */
-    .glow-line {
-      width: 40px;
-      height: 1px;
-      background: var(--accent);
-      margin: 0 0 24px;
-      box-shadow: 0 0 6px var(--accent);
-    }
-
-    /* ── Mobile ── */
+    /* Mobile */
     @media (max-width: 640px) {
       .page { padding: 24px 16px 40px; }
       .lang-nav { padding: 16px 16px 12px; }
       .social-grid { grid-template-columns: 1fr; }
       .about { padding: 16px; }
+      .identity { gap: 14px; }
+      .identity .profile-img { width: 60px; height: 60px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── Language Switcher ── -->
+  <!-- Language Switcher -->
   <nav class="lang-nav" aria-label="Idioma">
     <a href="#" class="active" data-lang-switch="es" lang="es" hreflang="es">🇲🇽 ES</a>
     <span class="lang-divider">/</span>
     <a href="#" data-lang-switch="en" lang="en" hreflang="en">🇺🇸 EN</a>
   </nav>
 
-  <!-- ── Content ── -->
+  <!-- Content -->
   <main class="page">
 
     <!-- Command header -->
@@ -279,9 +288,12 @@
 
     <!-- Identity -->
     <div class="identity">
-      <h1>usainbluntmx<span class="dot">.</span></h1>
-      <p class="tagline" data-i18n="tagline">Full Stack Developer</p>
-      <p class="location" data-i18n="location">🇲🇽 México</p>
+      <img src="richi-profile.png" alt="Richi" class="profile-img" />
+      <div class="identity-text">
+        <h1>usainbluntmx<span class="dot">.</span></h1>
+        <p class="tagline" data-i18n="tagline">Full Stack Developer</p>
+        <p class="location" data-i18n="location">🇲🇽 México</p>
+      </div>
     </div>
 
     <div class="glow-line"></div>
@@ -323,7 +335,7 @@
     <!-- Baila! Link -->
     <a href="https://matias.me/nsfw/" target="_blank" rel="noreferrer" class="baila-link">
       <span class="baila-icon">🕺</span>
-      <span>¡Baila!</span>
+      <span data-i18n="baila">¡Baila!</span>
     </a>
 
     <!-- Outro -->
@@ -339,7 +351,7 @@
 
   </main>
 
-  <!-- ── Translations & Icons ── -->
+  <!-- Translations & Icons -->
   <script>
     const i18n = {
       es: {
@@ -347,6 +359,7 @@
         location: "🇲🇽 México",
         about: '<span class="highlight">¡Hola!</span> Soy Richi 👋🏼<br><br>Ingeniero en Sistemas Computacionales y actualmente <span class="highlight">Full Stack Developer</span>.',
         links_label: "// ENLACES",
+        baila: "¡Baila!",
         outro: 'const act = () =&gt;<br>&nbsp;&nbsp;console.log(<a href="#">"build"</a>)<br>act()'
       },
       en: {
@@ -354,6 +367,7 @@
         location: "🇲🇽 Mexico",
         about: '<span class="highlight">Hey there!</span> I\'m Richi 👋🏼<br><br>Computer Systems Engineer and currently a <span class="highlight">Full Stack Developer</span>.',
         links_label: "// LINKS",
+        baila: "Dance!",
         outro: 'const act = () =&gt;<br>&nbsp;&nbsp;console.log(<a href="#">"build"</a>)<br>act()'
       }
     };

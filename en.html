@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Richi — Full Stack Developer</title>
+  <meta name="description" content="Richi's personal site — Computer Systems Engineer, Full Stack Developer, blockchain on Solana." />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Richi" />
+  <meta property="og:title" content="Richi — Full Stack Developer" />
+  <meta property="og:description" content="Richi's personal site — Computer Systems Engineer, Full Stack Developer." />
+  <meta property="og:url" content="https://usainbluntmx.github.io/en/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Richi — Full Stack Developer" />
+  <meta name="twitter:description" content="Richi's personal site — Computer Systems Engineer, Full Stack Developer." />
+  <link rel="canonical" href="https://usainbluntmx.github.io/en/" />
+  <link rel="alternate" hreflang="es" href="https://usainbluntmx.github.io/" />
+  <link rel="alternate" hreflang="en" href="https://usainbluntmx.github.io/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://usainbluntmx.github.io/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%230A0A0A'/%3E%3Ctext x='50' y='58' text-anchor='middle' font-family='Arial' font-size='36' font-weight='bold' fill='%2300FFAA'%3ER%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #0A0A0A;
+      --surface: #111111;
+      --surface-hover: #1A1A1A;
+      --border: #1A1A1A;
+      --text: #E0E0E0;
+      --text-secondary: #888888;
+      --text-muted: #555555;
+      --accent: #00FFAA;
+      --accent-dim: rgba(0, 255, 170, 0.08);
+      --font-mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover { color: var(--accent); }
+
+    .lang-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 20px 24px 16px;
+      max-width: 640px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      font-family: var(--font-mono);
+    }
+    .lang-nav a {
+      color: var(--text-muted);
+      padding: 2px 4px;
+      border-radius: 2px;
+    }
+    .lang-nav a:hover { color: var(--accent); }
+    .lang-nav a.active {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .lang-divider { color: var(--text-muted); }
+
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+
+    .cmd-line {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cmd-prompt { color: var(--accent); }
+    .cmd-path { color: var(--text-secondary); }
+    .cmd-cursor {
+      display: inline-block;
+      width: 7px;
+      height: 15px;
+      background: var(--accent);
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .identity { margin-bottom: 40px; }
+    .identity h1 {
+      font-family: var(--font-mono);
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 700;
+      margin: 0 0 12px;
+      color: var(--text);
+    }
+    .identity h1 .dot { color: var(--accent); }
+    .identity .tagline {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin: 0 0 6px;
+    }
+    .identity .location {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .glow-line {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 0 0 24px;
+      box-shadow: 0 0 6px var(--accent);
+    }
+
+    .about {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+    .about p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .about p .highlight { color: var(--accent); }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      background: var(--bg);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-secondary);
+      transition: background 0.25s, color 0.25s;
+    }
+    .social-link:hover {
+      background: var(--surface-hover);
+      color: var(--accent);
+    }
+    .social-link .icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .social-link .handle {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .outro {
+      text-align: center;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+    }
+    .outro p {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.8;
+    }
+    .outro a { color: var(--text-secondary); }
+    .outro a:hover { color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .page { padding: 24px 16px 40px; }
+      .lang-nav { padding: 16px 16px 12px; }
+      .social-grid { grid-template-columns: 1fr; }
+      .about { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="lang-nav" aria-label="Language">
+    <a href="#" data-lang-switch="es" lang="es" hreflang="es">🇲🇽 ES</a>
+    <span class="lang-divider">/</span>
+    <a href="#" class="active" data-lang-switch="en" lang="en" hreflang="en">🇺🇸 EN</a>
+  </nav>
+
+  <main class="page">
+
+    <div class="cmd-line">
+      <span class="cmd-prompt">$</span>
+      <span class="cmd-path">~/whoami</span>
+      <span class="cmd-cursor"></span>
+    </div>
+
+    <div class="identity">
+      <h1>usainbluntmx<span class="dot">.</span></h1>
+      <p class="tagline" data-i18n="tagline">Full Stack Developer</p>
+      <p class="location" data-i18n="location">🇲🇽 Mexico</p>
+    </div>
+
+    <div class="glow-line"></div>
+
+    <div class="about">
+      <p data-i18n="about">
+        <span class="highlight">Hey there!</span> I'm Richi 👋🏼
+        <br><br>
+        Computer Systems Engineer and currently a <span class="highlight">Full Stack Developer</span>.
+      </p>
+    </div>
+
+    <div class="section-label" data-i18n="links_label">// LINKS</div>
+    <div class="social-grid">
+      <a href="https://github.com/usainbluntmx" target="_blank" rel="noreferrer" class="social-link">
+        <span class="icon"></span>
+        <span>GitHub</span>
+        <span class="handle">/usainbluntmx</span>
+      </a>
+      <a href="https://x.com/usainbluntmx" target="_blank" rel="noreferrer" class="social-link">
+        <span class="icon"></span>
+        <span>X / Twitter</span>
+        <span class="handle">@usainbluntmx</span>
+      </a>
+      <a href="https://t.me/usainbluntmx" target="_blank" rel="noreferrer" class="social-link">
+        <span class="icon"></span>
+        <span>Telegram</span>
+        <span class="handle">@usainbluntmx</span>
+      </a>
+      <a href="https://www.linkedin.com/in/usainbluntmx" target="_blank" rel="noreferrer" class="social-link">
+        <span class="icon"></span>
+        <span>LinkedIn</span>
+        <span class="handle">/in/usainbluntmx</span>
+      </a>
+    </div>
+
+    <div class="outro">
+      <p data-i18n="outro">
+        const act = () =&gt;
+        <br>
+        &nbsp;&nbsp;console.log(<a href="#">"build"</a>)
+        <br>
+        act()
+      </p>
+    </div>
+
+  </main>
+
+  <script>
+    const i18n = {
+      es: {
+        tagline: "Full Stack Developer",
+        location: "🇲🇽 México",
+        about: '<span class="highlight">¡Hola!</span> Soy Richi 👋🏼<br><br>Ingeniero en Sistemas Computacionales y actualmente <span class="highlight">Full Stack Developer</span>.',
+        links_label: "// ENLACES",
+        outro: 'const act = () =&gt;<br>&nbsp;&nbsp;console.log(<a href="#">"build"</a>)<br>act()'
+      },
+      en: {
+        tagline: "Full Stack Developer",
+        location: "🇲🇽 Mexico",
+        about: '<span class="highlight">Hey there!</span> I\'m Richi 👋🏼<br><br>Computer Systems Engineer and currently a <span class="highlight">Full Stack Developer</span>.',
+        links_label: "// LINKS",
+        outro: 'const act = () =&gt;<br>&nbsp;&nbsp;console.log(<a href="#">"build"</a>)<br>act()'
+      }
+    };
+
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-lang-switch]').forEach(el => {
+        el.classList.toggle('active', el.dataset.langSwitch === lang);
+      });
+      const t = i18n[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key]) el.innerHTML = t[key];
+      });
+    }
+
+    document.querySelectorAll('[data-lang-switch]').forEach(el => {
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        setLang(el.dataset.langSwitch);
+      });
+    });
+
+    const icons = {
+      github: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>',
+      x: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46L20 4"/></svg>',
+      telegram: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2L2.5 10.5L9.5 13.5L12.5 20.5L21.5 2Z"/><path d="M21.5 2L12.5 13.5L10 16.5L9.5 20.5L13 15.5"/></svg>',
+      linkedin: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>'
+    };
+
+    document.querySelectorAll('.social-link').forEach(el => {
+      const href = el.getAttribute('href');
+      const iconEl = el.querySelector('.icon');
+      if (!iconEl) return;
+      if (href.includes('github.com')) iconEl.innerHTML = icons.github;
+      else if (href.includes('x.com') || href.includes('twitter.com')) iconEl.innerHTML = icons.x;
+      else if (href.includes('t.me')) iconEl.innerHTML = icons.telegram;
+      else if (href.includes('linkedin.com')) iconEl.innerHTML = icons.linkedin;
+    });
+  </script>
+
+</body>
+</html>

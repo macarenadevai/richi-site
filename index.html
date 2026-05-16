@@ -196,6 +196,32 @@
       font-size: 11px;
     }
 
+    /* ── Baila! Link full-width ── */
+    .baila-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 18px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      font-family: var(--font-mono);
+      font-size: 15px;
+      color: var(--accent);
+      margin-bottom: 40px;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .baila-link:hover {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .baila-icon {
+      font-size: 20px;
+    }
+
     /* ── Outro ── */
     .outro {
       text-align: center;
@@ -293,6 +319,12 @@
         <span class="handle">/in/usainbluntmx</span>
       </a>
     </div>
+
+    <!-- Baila! Link -->
+    <a href="https://matias.me/nsfw/" target="_blank" rel="noreferrer" class="baila-link">
+      <span class="baila-icon">🕺</span>
+      <span>¡Baila!</span>
+    </a>
 
     <!-- Outro -->
     <div class="outro">

@@ -1,394 +1,393 @@
-     1|<!DOCTYPE html>
-     2|<html lang="en" data-lang="en">
-     3|<head>
-     4|  <meta charset="UTF-8" />
-     5|  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     6|  <title>Richi — Full Stack Developer</title>
-     7|  <meta name="description" content="Richi's personal site — Computer Systems Engineer, Full Stack Developer, blockchain on Solana." />
-     8|  <meta name="robots" content="index,follow" />
-     9|  <meta property="og:type" content="website" />
-    10|  <meta property="og:site_name" content="Richi" />
-    11|  <meta property="og:title" content="Richi — Full Stack Developer" />
-    12|  <meta property="og:description" content="Richi's personal site — Computer Systems Engineer, Full Stack Developer." />
-    13|  <meta property="og:image" content="https://macarenadevai.github.io/richi-site/richi-profile.png" />
-    14|  <meta property="og:url" content="https://usainbluntmx.xyz/en/" />
-    15|  <meta name="twitter:card" content="summary_large_image" />
-    16|  <meta name="twitter:title" content="Richi — Full Stack Developer" />
-    17|  <meta name="twitter:description" content="Richi's personal site — Computer Systems Engineer, Full Stack Developer." />
-    18|  <meta name="twitter:image" content="https://macarenadevai.github.io/richi-site/richi-profile.png" />
-    19|  <link rel="canonical" href="https://usainbluntmx.xyz/en/" />
-    20|  <link rel="alternate" hreflang="es" href="https://usainbluntmx.xyz/" />
-    21|  <link rel="alternate" hreflang="en" href="https://usainbluntmx.xyz/en/" />
-    22|  <link rel="alternate" hreflang="x-default" href="https://usainbluntmx.xyz/" />
-    23|  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%230A0A0A'/%3E%3Ctext x='50' y='58' text-anchor='middle' font-family='Arial' font-size='36' font-weight='bold' fill='%2300FFAA'%3ER%3C/text%3E%3C/svg%3E" />
-    24|  <style>
-    25|    :root {
-    26|      --bg: #0A0A0A;
-    27|      --surface: #111111;
-    28|      --surface-hover: #1A1A1A;
-    29|      --border: #1A1A1A;
-    30|      --text: #E0E0E0;
-    31|      --text-secondary: #888888;
-    32|      --text-muted: #555555;
-    33|      --accent: #00FFAA;
-    34|      --font-mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
-    35|      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-    36|    }
-    37|
-    38|    * { box-sizing: border-box; }
-    39|    html { scroll-behavior: smooth; }
-    40|    body {
-    41|      margin: 0;
-    42|      background: var(--bg);
-    43|      color: var(--text);
-    44|      font-family: var(--font-body);
-    45|      line-height: 1.6;
-    46|      -webkit-font-smoothing: antialiased;
-    47|    }
-    48|    a {
-    49|      color: var(--text);
-    50|      text-decoration: none;
-    51|      transition: color 0.2s;
-    52|    }
-    53|    a:hover { color: var(--accent); }
-    54|
-    55|    .lang-nav {
-    56|      display: flex;
-    57|      align-items: center;
-    58|      gap: 0.5rem;
-    59|      padding: 20px 24px 16px;
-    60|      max-width: 640px;
-    61|      margin: 0 auto;
-    62|      border-bottom: 1px solid var(--border);
-    63|      font-size: 13px;
-    64|      font-family: var(--font-mono);
-    65|    }
-    66|    .lang-nav a {
-    67|      color: var(--text-muted);
-    68|      padding: 2px 4px;
-    69|      border-radius: 2px;
-    70|    }
-    71|    .lang-nav a:hover { color: var(--accent); }
-    72|    .lang-nav a.active {
-    73|      color: var(--accent);
-    74|      font-weight: 700;
-    75|    }
-    76|    .lang-divider { color: var(--text-muted); }
-    77|
-    78|    .page {
-    79|      max-width: 640px;
-    80|      margin: 0 auto;
-    81|      padding: 40px 24px 60px;
-    82|    }
-    83|
-    84|    .cmd-line {
-    85|      font-family: var(--font-mono);
-    86|      font-size: 12px;
-    87|      color: var(--text-muted);
-    88|      margin-bottom: 32px;
-    89|      display: flex;
-    90|      align-items: center;
-    91|      gap: 8px;
-    92|    }
-    93|    .cmd-prompt { color: var(--accent); }
-    94|    .cmd-path { color: var(--text-secondary); }
-    95|    .cmd-cursor {
-    96|      display: inline-block;
-    97|      width: 7px;
-    98|      height: 15px;
-    99|      background: var(--accent);
-   100|      animation: blink 1s step-end infinite;
-   101|    }
-   102|    @keyframes blink {
-   103|      0%, 100% { opacity: 1; }
-   104|      50% { opacity: 0; }
-   105|    }
-   106|
-   107|    .identity {
-   108|      display: flex;
-   109|      align-items: center;
-   110|      gap: 20px;
-   111|      margin-bottom: 32px;
-   112|    }
-   113|    .identity .profile-img {
-   114|      width: 72px;
-   115|      height: 72px;
-   116|      border-radius: 50%;
-   117|      border: 2px solid var(--border);
-   118|      flex-shrink: 0;
-   119|      object-fit: cover;
-   120|    }
-   121|    .identity .identity-text { flex: 1; }
-   122|    .identity h1 {
-   123|      font-family: var(--font-mono);
-   124|      font-size: clamp(1.5rem, 4vw, 2rem);
-   125|      font-weight: 700;
-   126|      margin: 0 0 6px;
-   127|      color: var(--text);
-   128|    }
-   129|    .identity h1 .dot { color: var(--accent); }
-   130|    .identity .tagline {
-   131|      font-family: var(--font-mono);
-   132|      font-size: 14px;
-   133|      color: var(--text-secondary);
-   134|      margin: 0 0 4px;
-   135|    }
-   136|    .identity .location {
-   137|      font-family: var(--font-mono);
-   138|      font-size: 13px;
-   139|      color: var(--text-muted);
-   140|      margin: 0;
-   141|    }
-   142|
-   143|    .glow-line {
-   144|      width: 40px;
-   145|      height: 1px;
-   146|      background: var(--accent);
-   147|      margin: 0 0 24px;
-   148|      box-shadow: 0 0 6px var(--accent);
-   149|    }
-   150|
-   151|    .about {
-   152|      margin-bottom: 40px;
-   153|      padding: 20px;
-   154|      border: 1px solid var(--border);
-   155|      border-radius: 8px;
-   156|      background: var(--surface);
-   157|    }
-   158|    .about p {
-   159|      margin: 0;
-   160|      font-size: 14px;
-   161|      color: var(--text-secondary);
-   162|      line-height: 1.7;
-   163|    }
-   164|    .about p .highlight { color: var(--accent); }
-   165|
-   166|    .section-label {
-   167|      font-family: var(--font-mono);
-   168|      font-size: 12px;
-   169|      color: var(--text-muted);
-   170|      margin-bottom: 16px;
-   171|    }
-   172|
-   173|    .social-grid {
-   174|      display: grid;
-   175|      grid-template-columns: 1fr 1fr;
-   176|      gap: 1px;
-   177|      background: var(--border);
-   178|      border: 1px solid var(--border);
-   179|      border-radius: 8px;
-   180|      overflow: hidden;
-   181|      margin-bottom: 0;
-   182|    }
-   183|    .social-link {
-   184|      display: flex;
-   185|      align-items: center;
-   186|      gap: 10px;
-   187|      padding: 14px 16px;
-   188|      background: var(--bg);
-   189|      font-family: var(--font-mono);
-   190|      font-size: 13px;
-   191|      color: var(--text-secondary);
-   192|      transition: background 0.25s, color 0.25s;
-   193|    }
-   194|    .social-link:hover {
-   195|      background: var(--surface-hover);
-   196|      color: var(--accent);
-   197|    }
-   198|    .social-link .icon {
-   199|      width: 20px;
-   200|      height: 20px;
-   201|      display: flex;
-   202|      align-items: center;
-   203|      justify-content: center;
-   204|      flex-shrink: 0;
-   205|    }
-   206|    .social-link .handle {
-   207|      color: var(--text-muted);
-   208|      font-size: 11px;
-   209|    }
-   210|
-   211|    .baila-link {
-   212|      display: flex;
-   213|      align-items: center;
-   214|      justify-content: center;
-   215|      gap: 10px;
-   216|      width: 100%;
-   217|      padding: 18px 16px;
-   218|      border: 1px solid var(--border);
-   219|      border-radius: 8px;
-   220|      background: var(--surface);
-   221|      font-family: var(--font-mono);
-   222|      font-size: 15px;
-   223|      color: var(--accent);
-   224|      margin: 10px 0 28px;
-   225|      transition: background 0.25s, border-color 0.25s;
-   226|    }
-   227|    .baila-link:hover {
-   228|      background: var(--surface-hover);
-   229|      border-color: var(--accent);
-   230|      color: var(--accent);
-   231|    }
-   232|    .baila-icon { font-size: 20px; }
-   233|
-   234|    .outro {
-   235|      text-align: center;
-   236|      padding: 32px 0;
-   237|      border-top: 1px solid var(--border);
-   238|    }
-   239|    .outro p {
-   240|      font-family: var(--font-mono);
-   241|      font-size: 13px;
-   242|      color: var(--text-muted);
-   243|      margin: 0;
-   244|      line-height: 1.8;
-   245|    }
-   246|    .outro a { color: var(--text-secondary); }
-   247|    .outro a:hover { color: var(--accent); }
-   248|
-   249|    @media (max-width: 640px) {
-   250|      .page { padding: 24px 16px 40px; }
-   251|      .lang-nav { padding: 16px 16px 12px; }
-   252|      .social-grid { grid-template-columns: 1fr; }
-   253|      .about { padding: 16px; }
-   254|      .identity { gap: 14px; }
-   255|      .identity .profile-img { width: 60px; height: 60px; }
-   256|    }
-   257|  </style>
-   258|</head>
-   259|<body>
-   260|
-   261|  <nav class="lang-nav" aria-label="Language">
-   262|    <a href="#" data-lang-switch="es" lang="es" hreflang="es">🇲🇽 ES</a>
-   263|    <span class="lang-divider">/</span>
-   264|    <a href="#" class="active" data-lang-switch="en" lang="en" hreflang="en">🇺🇸 EN</a>
-   265|  </nav>
-   266|
-   267|  <main class="page">
-   268|
-   269|    <div class="cmd-line">
-   270|      <span class="cmd-prompt">$</span>
-   271|      <span class="cmd-path">~/whoami</span>
-   272|      <span class="cmd-cursor"></span>
-   273|    </div>
-   274|
-   275|    <div class="identity">
-   276|      <img src="richi-profile.png" alt="Richi" class="profile-img" />
-   277|      <div class="identity-text">
-   278|        <h1>usainbluntmx<span class="dot">.</span></h1>
-   279|        <p class="tagline" data-i18n="tagline">Full Stack Developer</p>
-   280|        <p class="location" data-i18n="location">🇲🇽 Mexico</p>
-   281|      </div>
-   282|    </div>
-   283|
-   284|    <div class="glow-line"></div>
-   285|
-   286|    <div class="about">
-   287|      <p data-i18n="about">
-   288|        <span class="highlight">Hey there!</span> I'm Richi 👋🏼
-   289|        <br><br>
-   290|        Computer Systems Engineer and currently a <span class="highlight">Full Stack Developer</span>.
-   291|      </p>
-   292|    </div>
-   293|
-   294|    <div class="section-label" data-i18n="links_label">// LINKS</div>
-   295|    <div class="social-grid">
-   296|      <a href="https://github.com/usainbluntmx" target="_blank" rel="noreferrer" class="social-link">
-   297|        <span class="icon"></span>
-   298|        <span>GitHub</span>
-   299|        <span class="handle">/usainbluntmx</span>
-   300|      </a>
-   301|      <a href="https://x.com/usainbluntmx" target="_blank" rel="noreferrer" class="social-link">
-   302|        <span class="icon"></span>
-   303|        <span>X / Twitter</span>
-   304|        <span class="handle">@usainbluntmx</span>
-   305|      </a>
-   306|      <a href="https://t.me/usainbluntmx" target="_blank" rel="noreferrer" class="social-link">
-   307|        <span class="icon"></span>
-   308|        <span>Telegram</span>
-   309|        <span class="handle">@usainbluntmx</span>
-   310|      </a>
-   311|      <a href="https://www.linkedin.com/in/usainbluntmx" target="_blank" rel="noreferrer" class="social-link">
-   312|        <span class="icon"></span>
-   313|        <span>LinkedIn</span>
-   314|        <span class="handle">/in/usainbluntmx</span>
-   315|      </a>
-   316|    </div>
-   317|
-   318|    <a href="https://matias.me/nsfw/" target="_blank" rel="noreferrer" class="baila-link">
-   319|      <span class="baila-icon">🕺</span>
-   320|      <span data-i18n="baila">Dance!</span>
-   321|    </a>
-   322|
-   323|    <div class="outro">
-   324|      <p data-i18n="outro">
-   325|        const act = () =&gt;
-   326|        <br>
-   327|        &nbsp;&nbsp;console.log(<a href="#">"build"</a>)
-   328|        <br>
-   329|        act()
-   330|      </p>
-   331|    </div>
-   332|
-   333|  </main>
-   334|
-   335|  <script>
-   336|    const i18n = {
-   337|      es: {
-   338|        tagline: "Full Stack Developer",
-   339|        location: "🇲🇽 México",
-   340|        about: '<span class="highlight">¡Hola!</span> Soy Richi 👋🏼<br><br>Ingeniero en Sistemas Computacionales y actualmente <span class="highlight">Full Stack Developer</span>.',
-   341|        links_label: "// ENLACES",
-   342|        baila: "¡Baila!",
-   343|        outro: 'const act = () =&gt;<br>&nbsp;&nbsp;console.log(<a href="#">"build"</a>)<br>act()'
-   344|      },
-   345|      en: {
-   346|        tagline: "Full Stack Developer",
-   347|        location: "🇲🇽 Mexico",
-   348|        about: '<span class="highlight">Hey there!</span> I\'m Richi 👋🏼<br><br>Computer Systems Engineer and currently a <span class="highlight">Full Stack Developer</span>.',
-   349|        links_label: "// LINKS",
-   350|        baila: "Dance!",
-   351|        outro: 'const act = () =&gt;<br>&nbsp;&nbsp;console.log(<a href="#">"build"</a>)<br>act()'
-   352|      }
-   353|    };
-   354|
-   355|    function setLang(lang) {
-   356|      document.documentElement.lang = lang;
-   357|      document.querySelectorAll('[data-lang-switch]').forEach(el => {
-   358|        el.classList.toggle('active', el.dataset.langSwitch === lang);
-   359|      });
-   360|      const t = i18n[lang];
-   361|      document.querySelectorAll('[data-i18n]').forEach(el => {
-   362|        const key = el.dataset.i18n;
-   363|        if (t[key]) el.innerHTML = t[key];
-   364|      });
-   365|    }
-   366|
-   367|    document.querySelectorAll('[data-lang-switch]').forEach(el => {
-   368|      el.addEventListener('click', e => {
-   369|        e.preventDefault();
-   370|        setLang(el.dataset.langSwitch);
-   371|      });
-   372|    });
-   373|
-   374|    const icons = {
-   375|      github: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>',
-   376|      x: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46L20 4"/></svg>',
-   377|      telegram: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2L2.5 10.5L9.5 13.5L12.5 20.5L21.5 2Z"/><path d="M21.5 2L12.5 13.5L10 16.5L9.5 20.5L13 15.5"/></svg>',
-   378|      linkedin: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>'
-   379|    };
-   380|
-   381|    document.querySelectorAll('.social-link').forEach(el => {
-   382|      const href = el.getAttribute('href');
-   383|      const iconEl = el.querySelector('.icon');
-   384|      if (!iconEl) return;
-   385|      if (href.includes('github.com')) iconEl.innerHTML = icons.github;
-   386|      else if (href.includes('x.com') || href.includes('twitter.com')) iconEl.innerHTML = icons.x;
-   387|      else if (href.includes('t.me')) iconEl.innerHTML = icons.telegram;
-   388|      else if (href.includes('linkedin.com')) iconEl.innerHTML = icons.linkedin;
-   389|    });
-   390|  </script>
-   391|
-   392|</body>
-   393|</html>
-   394|
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Richi — Full Stack Developer</title>
+  <meta name="description" content="Richi's personal site — Computer Systems Engineer, Full Stack Developer, blockchain on Solana." />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Richi" />
+  <meta property="og:title" content="Richi — Full Stack Developer" />
+  <meta property="og:description" content="Richi's personal site — Computer Systems Engineer, Full Stack Developer." />
+  <meta property="og:image" content="https://macarenadevai.github.io/richi-site/richi-profile.png" />
+  <meta property="og:url" content="https://usainbluntmx.xyz/en/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Richi — Full Stack Developer" />
+  <meta name="twitter:description" content="Richi's personal site — Computer Systems Engineer, Full Stack Developer." />
+  <meta name="twitter:image" content="https://macarenadevai.github.io/richi-site/richi-profile.png" />
+  <link rel="canonical" href="https://usainbluntmx.xyz/en/" />
+  <link rel="alternate" hreflang="es" href="https://usainbluntmx.xyz/" />
+  <link rel="alternate" hreflang="en" href="https://usainbluntmx.xyz/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://usainbluntmx.xyz/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%230A0A0A'/%3E%3Ctext x='50' y='58' text-anchor='middle' font-family='Arial' font-size='36' font-weight='bold' fill='%2300FFAA'%3ER%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #0A0A0A;
+      --surface: #111111;
+      --surface-hover: #1A1A1A;
+      --border: #1A1A1A;
+      --text: #E0E0E0;
+      --text-secondary: #888888;
+      --text-muted: #555555;
+      --accent: #00FFAA;
+      --font-mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover { color: var(--accent); }
+
+    .lang-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 20px 24px 16px;
+      max-width: 640px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      font-family: var(--font-mono);
+    }
+    .lang-nav a {
+      color: var(--text-muted);
+      padding: 2px 4px;
+      border-radius: 2px;
+    }
+    .lang-nav a:hover { color: var(--accent); }
+    .lang-nav a.active {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .lang-divider { color: var(--text-muted); }
+
+    .page {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 28px 24px 40px;
+    }
+
+    .cmd-line {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cmd-prompt { color: var(--accent); }
+    .cmd-path { color: var(--text-secondary); }
+    .cmd-cursor {
+      display: inline-block;
+      width: 7px;
+      height: 15px;
+      background: var(--accent);
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .identity {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .identity .profile-img {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+    .identity .identity-text { flex: 1; }
+    .identity h1 {
+      font-family: var(--font-mono);
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 700;
+      margin: 0 0 6px;
+      color: var(--text);
+    }
+    .identity h1 .dot { color: var(--accent); }
+    .identity .tagline {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin: 0 0 4px;
+    }
+    .identity .location {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .glow-line {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 0 0 16px;
+      box-shadow: 0 0 6px var(--accent);
+    }
+
+    .about {
+      margin-bottom: 28px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+    .about p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .about p .highlight { color: var(--accent); }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 0;
+    }
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--bg);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-secondary);
+      transition: background 0.25s, color 0.25s;
+    }
+    .social-link:hover {
+      background: var(--surface-hover);
+      color: var(--accent);
+    }
+    .social-link .icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .social-link .handle {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .baila-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      font-family: var(--font-mono);
+      font-size: 15px;
+      color: var(--accent);
+      margin: 10px 0 28px;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .baila-link:hover {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .baila-icon { font-size: 20px; }
+
+    .outro {
+      text-align: center;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+    }
+    .outro p {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.8;
+    }
+    .outro a { color: var(--text-secondary); }
+    .outro a:hover { color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .page { padding: 20px 16px 32px; }
+      .lang-nav { padding: 16px 16px 12px; }
+      .social-grid { grid-template-columns: 1fr; }
+      .about { padding: 16px; }
+      .identity { gap: 14px; }
+      .identity .profile-img { width: 60px; height: 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="lang-nav" aria-label="Language">
+    <a href="#" data-lang-switch="es" lang="es" hreflang="es">🇲🇽 ES</a>
+    <span class="lang-divider">/</span>
+    <a href="#" class="active" data-lang-switch="en" lang="en" hreflang="en">🇺🇸 EN</a>
+  </nav>
+
+  <main class="page">
+
+    <div class="cmd-line">
+      <span class="cmd-prompt">$</span>
+      <span class="cmd-path">~/whoami</span>
+      <span class="cmd-cursor"></span>
+    </div>
+
+    <div class="identity">
+      <img src="richi-profile.png" alt="Richi" class="profile-img" />
+      <div class="identity-text">
+        <h1>usainbluntmx<span class="dot">.</span></h1>
+        <p class="tagline" data-i18n="tagline">Full Stack Developer</p>
+        <p class="location" data-i18n="location">🇲🇽 Mexico</p>
+      </div>
+    </div>
+
+    <div class="glow-line"></div>
+
+    <div class="about">
+      <p data-i18n="about">
+        <span class="highlight">Hey there!</span> I'm Richi 👋🏼
+        <br><br>
+        Computer Systems Engineer and currently a <span class="highlight">Full Stack Developer</span>.
+      </p>
+    </div>
+
+    <div class="section-label" data-i18n="links_label">// LINKS</div>
+    <div class="social-grid">
+      <a href="https://github.com/usainbluntmx" target="_blank" rel="noreferrer" class="social-link">
+        <span class="icon"></span>
+        <span>GitHub</span>
+        <span class="handle">/usainbluntmx</span>
+      </a>
+      <a href="https://x.com/usainbluntmx" target="_blank" rel="noreferrer" class="social-link">
+        <span class="icon"></span>
+        <span>X / Twitter</span>
+        <span class="handle">@usainbluntmx</span>
+      </a>
+      <a href="https://t.me/usainbluntmx" target="_blank" rel="noreferrer" class="social-link">
+        <span class="icon"></span>
+        <span>Telegram</span>
+        <span class="handle">@usainbluntmx</span>
+      </a>
+      <a href="https://www.linkedin.com/in/usainbluntmx" target="_blank" rel="noreferrer" class="social-link">
+        <span class="icon"></span>
+        <span>LinkedIn</span>
+        <span class="handle">/in/usainbluntmx</span>
+      </a>
+    </div>
+
+    <a href="https://matias.me/nsfw/" target="_blank" rel="noreferrer" class="baila-link">
+      <span class="baila-icon">🕺</span>
+      <span data-i18n="baila">Dance!</span>
+    </a>
+
+    <div class="outro">
+      <p data-i18n="outro">
+        const act = () =&gt;
+        <br>
+        &nbsp;&nbsp;console.log(<a href="#">"build"</a>)
+        <br>
+        act()
+      </p>
+    </div>
+
+  </main>
+
+  <script>
+    const i18n = {
+      es: {
+        tagline: "Full Stack Developer",
+        location: "🇲🇽 México",
+        about: '<span class="highlight">¡Hola!</span> Soy Richi 👋🏼<br><br>Ingeniero en Sistemas Computacionales y actualmente <span class="highlight">Full Stack Developer</span>.',
+        links_label: "// ENLACES",
+        baila: "¡Baila!",
+        outro: 'const act = () =&gt;<br>&nbsp;&nbsp;console.log(<a href="#">"build"</a>)<br>act()'
+      },
+      en: {
+        tagline: "Full Stack Developer",
+        location: "🇲🇽 Mexico",
+        about: '<span class="highlight">Hey there!</span> I\'m Richi 👋🏼<br><br>Computer Systems Engineer and currently a <span class="highlight">Full Stack Developer</span>.',
+        links_label: "// LINKS",
+        baila: "Dance!",
+        outro: 'const act = () =&gt;<br>&nbsp;&nbsp;console.log(<a href="#">"build"</a>)<br>act()'
+      }
+    };
+
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-lang-switch]').forEach(el => {
+        el.classList.toggle('active', el.dataset.langSwitch === lang);
+      });
+      const t = i18n[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key]) el.innerHTML = t[key];
+      });
+    }
+
+    document.querySelectorAll('[data-lang-switch]').forEach(el => {
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        setLang(el.dataset.langSwitch);
+      });
+    });
+
+    const icons = {
+      github: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>',
+      x: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46L20 4"/></svg>',
+      telegram: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2L2.5 10.5L9.5 13.5L12.5 20.5L21.5 2Z"/><path d="M21.5 2L12.5 13.5L10 16.5L9.5 20.5L13 15.5"/></svg>',
+      linkedin: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>'
+    };
+
+    document.querySelectorAll('.social-link').forEach(el => {
+      const href = el.getAttribute('href');
+      const iconEl = el.querySelector('.icon');
+      if (!iconEl) return;
+      if (href.includes('github.com')) iconEl.innerHTML = icons.github;
+      else if (href.includes('x.com') || href.includes('twitter.com')) iconEl.innerHTML = icons.x;
+      else if (href.includes('t.me')) iconEl.innerHTML = icons.telegram;
+      else if (href.includes('linkedin.com')) iconEl.innerHTML = icons.linkedin;
+    });
+  </script>
+
+</body>
+</html>

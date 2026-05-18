@@ -231,6 +231,82 @@
     }
     .baila-icon { font-size: 20px; }
 
+    /* Achievements */
+    .achievement-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+    .achievement-card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 14px 16px;
+      background: var(--bg);
+    }
+    .achievement-card:last-child { border-bottom: none; }
+    .achievement-card .ach-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+      width: fit-content;
+    }
+    .ach-badge.badge-green {
+      background: rgba(0, 255, 170, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(0, 255, 170, 0.2);
+    }
+    .ach-badge.badge-gold {
+      background: rgba(255, 215, 0, 0.1);
+      color: #FFD700;
+      border: 1px solid rgba(255, 215, 0, 0.25);
+    }
+    .ach-badge.badge-blue {
+      background: rgba(70, 130, 255, 0.1);
+      color: #4682FF;
+      border: 1px solid rgba(70, 130, 255, 0.25);
+    }
+    .achievement-card .ach-title {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0;
+    }
+    .achievement-card .ach-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .achievement-card .ach-repo {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin: 0;
+    }
+    .achievement-card .ach-repo a {
+      color: var(--text-muted);
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .achievement-card .ach-repo a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
     .outro {
       text-align: center;
       padding: 24px 0;
@@ -283,6 +359,30 @@
 
     <div class="glow-line"></div>
 
+    <!-- Achievements -->
+    <div class="section-label" data-i18n="achievements_label">// ACHIEVEMENTS</div>
+    <div class="achievement-list">
+      <div class="achievement-card">
+        <span class="ach-badge badge-green">✅ &nbsp;<span data-i18n="ach1_badge">Solana Certification</span></span>
+        <h3 class="ach-title" data-i18n="ach1_title">Freelance Escrow</h3>
+        <p class="ach-desc" data-i18n="ach1_desc">Delivered and approved project for the official <strong>Solana Developer</strong> certification. Decentralized escrow system for freelancers on Solana.</p>
+        <p class="ach-repo"><a href="https://github.com/usainbluntmx/freelance-escrow" target="_blank" rel="noreferrer">github.com/usainbluntmx/freelance-escrow →</a></p>
+      </div>
+      <div class="achievement-card">
+        <span class="ach-badge badge-blue">🏆 &nbsp;<span data-i18n="ach2_badge">Solana LATAM Hackathon</span></span>
+        <h3 class="ach-title" data-i18n="ach2_title">Atlas World Protocol</h3>
+        <p class="ach-desc" data-i18n="ach2_desc">Project submitted for the <strong>Solana LATAM Hackathon</strong> and approved for incubation. Decentralized virtual world protocol on Solana.</p>
+        <p class="ach-repo"><a href="https://github.com/usainbluntmx/atlas" target="_blank" rel="noreferrer">github.com/usainbluntmx/atlas →</a></p>
+      </div>
+      <div class="achievement-card">
+        <span class="ach-badge badge-gold">🥉 &nbsp;<span data-i18n="ach3_badge">3rd Place — Monad Blitz</span></span>
+        <h3 class="ach-title" data-i18n="ach3_title">Nodemesh</h3>
+        <p class="ach-desc" data-i18n="ach3_desc">Winner of <strong>3rd place</strong> at the 2nd edition of <strong>Monad Blitz Hackathon CDMX</strong>. Decentralized node infrastructure.</p>
+        <p class="ach-repo"><a href="https://github.com/usainbluntmx/nodemesh" target="_blank" rel="noreferrer">github.com/usainbluntmx/nodemesh →</a></p>
+      </div>
+    </div>
+
+    <!-- About Card -->
     <div class="about">
       <p data-i18n="about">
         <span class="highlight">Hey there!</span> I'm Richi 👋🏼
@@ -339,6 +439,16 @@
         location: "🇲🇽 México",
         about: '<span class="highlight">¡Hola!</span> Soy Richi 👋🏼<br><br>Ingeniero en Sistemas Computacionales y actualmente <span class="highlight">Full Stack Developer</span>.',
         links_label: "// ENLACES",
+        achievements_label: "// LOGROS",
+        ach1_badge: "Certificación Solana",
+        ach1_title: "Freelance Escrow",
+        ach1_desc: 'Proyecto entregado y aprobado para la certificación oficial como <strong>Solana Developer</strong>. Sistema de escrow descentralizado para freelancers en Solana.',
+        ach2_badge: "Solana LATAM Hackathon",
+        ach2_title: "Atlas World Protocol",
+        ach2_desc: 'Proyecto entregado para el <strong>Solana LATAM Hackathon</strong> y aprobado para incubación. Protocolo de mundo virtual descentralizado en Solana.',
+        ach3_badge: "3er Lugar — Monad Blitz",
+        ach3_title: "Nodemesh",
+        ach3_desc: 'Proyecto ganador del <strong>3er lugar</strong> en la 2da edición del <strong>Monad Blitz Hackathon CDMX</strong>. Infraestructura de nodos descentralizada.',
         baila: "¡Baila!",
         outro: 'const act = () =&gt;<br>&nbsp;&nbsp;console.log(<a href="#">"build"</a>)<br>act()'
       },
@@ -347,6 +457,16 @@
         location: "🇲🇽 Mexico",
         about: '<span class="highlight">Hey there!</span> I\'m Richi 👋🏼<br><br>Computer Systems Engineer and currently a <span class="highlight">Full Stack Developer</span>.',
         links_label: "// LINKS",
+        achievements_label: "// ACHIEVEMENTS",
+        ach1_badge: "Solana Certification",
+        ach1_title: "Freelance Escrow",
+        ach1_desc: 'Delivered and approved project for the official <strong>Solana Developer</strong> certification. Decentralized escrow system for freelancers on Solana.',
+        ach2_badge: "Solana LATAM Hackathon",
+        ach2_title: "Atlas World Protocol",
+        ach2_desc: 'Project submitted for the <strong>Solana LATAM Hackathon</strong> and approved for incubation. Decentralized virtual world protocol on Solana.',
+        ach3_badge: "3rd Place — Monad Blitz",
+        ach3_title: "Nodemesh",
+        ach3_desc: 'Winner of <strong>3rd place</strong> at the 2nd edition of <strong>Monad Blitz Hackathon CDMX</strong>. Decentralized node infrastructure.',
         baila: "Dance!",
         outro: 'const act = () =&gt;<br>&nbsp;&nbsp;console.log(<a href="#">"build"</a>)<br>act()'
       }
